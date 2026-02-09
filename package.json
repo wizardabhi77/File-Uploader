@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/wizardabhi77/File-Uploader#readme",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.3.0",
     "@prisma/client": "^7.3.0",
+    "@quixo3/prisma-session-store": "^3.1.19",
     "dotenv": "^17.2.4",
     "ejs": "^4.0.1",
     "express": "^5.2.1",

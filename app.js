@@ -1,23 +1,19 @@
 
-const Express = require("express");
+import Express from "express";
 
 const app = Express();
 
-const path = require("node:path");
+import path from "node:path";
 
-const session = require("express-session");
-require("dotenv/config");
-const { PrismaPg } = require("@prisma/adapter-pg");
-const { PrismaClient } = require("./generated/prisma/client");
-const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
+import session from "express-session";
 
-const connectionString = process.env.DATABASE_URL;
-const adapter = new PrismaPg({ connectionString });
-const prisma = new PrismaClient({ adapter });
+import { prisma } from "./lib/prisma.js";
 
-const userRouter = require("./routers/userRouter");
+import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 
-app.set("views", path.join(__dirname,"views"));
+import userRouter from "./routers/userRouter.js";
+
+app.set("views","./views");
 app.set("view engine","ejs");
 
 app.use(Express.urlencoded({ extended : true}));

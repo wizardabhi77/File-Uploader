@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <form action="/sign-up" method="POST">
+            <label for="username">USERNAME:</label>
+            <input type="text" name="username" id="username"> <br>
+            <label for="password">PASSWORD:</label>
+            <input type="password" name="password" id="password"> <br>
+            <label for="confirmpassword">CONFIRM PASSWORD:</label>
+            <input type="password" name="confirmpassword" id="confirmpassword"> <br>
+            <button type="submit">SUBMIT</button>
+        </form>
+
+        <% if(errors) { %>
+
+        <ul>
+       <% errors.map((error)=> { %>
+
+
+            <li><%= error.msg %></li>
+
+        
+                        
+        <% }) %>
+
+        </ul>
+        <% } %>
+    </body>
+</html>

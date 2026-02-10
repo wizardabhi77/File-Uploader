@@ -22,13 +22,13 @@ model Session {
   @@map("session")
 }
 
-model User {
+model Users {
   id Int @id @default(autoincrement())
   username String @unique
   password String
   files File[]
 
-  @@map("user")
+  @@map("users")
 }
 
 model File {
@@ -37,7 +37,7 @@ model File {
   type String
   size Int
   added DateTime @default(now())
-  user User @relation(fields: [userId], references: [id])
+  user Users @relation(fields: [userId], references: [id])
   userId Int
   fileSrcId FileSrc?
 

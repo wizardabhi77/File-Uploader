@@ -28,8 +28,27 @@ async function createUser (username, password) {
 
 }
 
+async function createFile (filename, type, size, added, uid) {
+    await prisma.file.create({
+        data : {
+            filename : filename,
+            type : type,
+            size : size,
+            userId : uid
+        }
+    })
+}
+
+async function findAllFiles () {
+   const files = await prisma.file.findMany();
+
+   return files;
+}
+
 export default {
     findUser,
     findUserById,
-    createUser
+    findAllFiles,
+    createUser,
+    createFile
 }

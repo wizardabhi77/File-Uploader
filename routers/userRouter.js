@@ -7,6 +7,10 @@ const userRouter = Router();
 
 import userController from "../controllers/userController.js";
 
+import multer from "multer";
+
+const upload = multer({dest: "uploads/"});
+
 userRouter.use(passport.session());
 
 function userAuthenticated (req, res, next) {
@@ -20,6 +24,8 @@ userRouter.get("/system",userAuthenticated,userController.getSystem);
 
 userRouter.get("/sign-up",userController.getSignUp);
 
+
+
 userRouter.post("/sign-up",userController.postSignUp);
 
 userRouter.post("/login", registerValidation, passport.authenticate("local",{
@@ -27,5 +33,7 @@ userRouter.post("/login", registerValidation, passport.authenticate("local",{
     failureRedirect: "/"
 })
 );
+
+userRouter.post("/file", upload.single("file"), userController.postFile);
 
 export default userRouter;
